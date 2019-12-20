@@ -1,6 +1,6 @@
 import {Socket} from 'socket.io';
 
-export type EventCallback = (socket: Socket) => void
+export type EventCallback = (socket: Socket) => void;
 
 export interface SocketServiceInterface {
     onConnection(cb: () => void): void;
