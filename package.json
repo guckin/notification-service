@@ -1,0 +1,32 @@
+{
+  "name": "node-server-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf build coverage",
+    "start": "node build/src/app.js",
+    "build": "tsc",
+    "test": "jest --config ./jest.config.json",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --config ./jest.config.json",
+    "test:watch": "npm run test -- --watchAll"
+  },
+  "author": "Stephen McGuckin",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.0",
+    "@types/jest": "^24.0.19",
+    "@types/morgan": "^1.7.37",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.13.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "cors": "latest",
+    "morgan": "latest"
+  }
+}

@@ -1,0 +1,38 @@
+name: Node CI
+
+on:
+  push:
+    branches:
+      - master
+      - release/*
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: test
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install, build, and test
+        run: |
+          npm ci
+          npm test
+        env:
+          CI: true
+#      - name: authenticate
+#        uses: actions/gcloud/auth@master
+#        env:
+#          GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
+#      - name:  gcloud deploy
+#        uses: actions/gcloud/cli@master
+#        with:
+#          args: app deploy
+#        env:
+#          GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
+#          CLOUDSDK_CORE_PROJECT: ${{ secrets.PROJECT_NAME }}
+#
+#
