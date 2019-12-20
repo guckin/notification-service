@@ -18,6 +18,7 @@
     "@types/express": "^4.17.0",
     "@types/jest": "^24.0.19",
     "@types/morgan": "^1.7.37",
+    "@types/socket.io": "^2.1.4",
     "jest": "^24.9.0",
     "ts-jest": "^24.1.0",
     "tslint": "^5.13.0",
@@ -25,8 +26,9 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "express": "^4.17.1",
     "cors": "latest",
-    "morgan": "latest"
+    "express": "^4.17.1",
+    "morgan": "latest",
+    "socket-io": "^1.0.0"
   }
 }
