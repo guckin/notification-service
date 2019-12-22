@@ -1,19 +1,26 @@
 import {NotificationRoute} from './notification.route';
 import * as Router from 'koa-router';
 import {Context} from 'koa';
+import {SseMiddlewareProviderInterface} from '../sse-middleware/sse-middleware.interface';
+
+class SseMiddlewareProviderMock implements SseMiddlewareProviderInterface {
+    attachMiddleware(ctx: Context): void {
+    }
+}
 
 describe('NotificationRoutes', () => {
 
     let route: NotificationRoute;
     let router: Router;
     let routeHandler: (ctx: Context) => void;
-    let sseMiddleWare: (ctx: Context) => void;
+    let sseMiddleWareProvider: SseMiddlewareProviderInterface;
     let notificationMiddleware: (ctx: Context) => void;
 
     beforeEach(() => {
-        sseMiddleWare = jest.fn();
+        sseMiddleWareProvider = new SseMiddlewareProviderMock();
+        sseMiddleWareProvider.attachMiddleware = jest.fn();
         notificationMiddleware = jest.fn();
-        route = new NotificationRoute(sseMiddleWare, notificationMiddleware);
+        route = new NotificationRoute(sseMiddleWareProvider, notificationMiddleware);
         router = new Router();
         router.get = jest
             .fn()
@@ -33,7 +40,7 @@ describe('NotificationRoutes', () => {
         const ctx: Context = {req: {}, res: {}} as any;
         handleRoute(ctx);
 
-        expect(sseMiddleWare).toHaveBeenCalledWith(ctx);
+        expect(sseMiddleWareProvider.attachMiddleware).toHaveBeenCalledWith(ctx);
     });
 
     it('uses notification middleware', () => {

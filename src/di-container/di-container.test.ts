@@ -5,7 +5,7 @@ import {TYPES} from './types';
 import {NotificationRoute} from '../notifcations-routing/notification.route';
 import {NotificationSubscriber} from '../notifiction-subscriber/notification.subscriber';
 import {StreamFactory} from '../stream/stream.factory';
-import {sseMiddleWare} from '../sse-middleware/sse-middleware';
+import {SseMiddlewareProvider} from '../sse-middleware/sse-middleware.provider';
 import {notificationMiddleware} from '../notification-middleware/notification-middleware';
 
 describe('di-container', () => {
@@ -16,7 +16,7 @@ describe('di-container', () => {
         isRegistered(TYPES.NotificationSubscriber, NotificationSubscriber);
         constantRegistered(TYPES.NotificationSubject, NotificationSubject);
         isRegistered(TYPES.StreamFactory, StreamFactory);
-        constantRegistered(TYPES.SseMiddleware, sseMiddleWare);
+        isRegistered(TYPES.SseMiddlewareProvider, SseMiddlewareProvider);
         constantRegistered(TYPES.NotificationMiddleware, notificationMiddleware);
     });
 
