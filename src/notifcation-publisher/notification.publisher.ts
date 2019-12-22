@@ -1,25 +1,22 @@
 import {PublisherServiceInterface} from '../publisher/publisher.interface';
 import {Notification} from '../notifcations/notifaction.interface';
-import {Observable, Subscriber} from 'rxjs';
+import {Subject} from 'rxjs';
 
 export class NotificationPublisher implements PublisherServiceInterface<Notification> {
 
-    private notificationsObservable: Observable<Notification>;
-    private subscriber: Subscriber<Notification>;
+    private notificationsSubject: Subject<Notification>;
 
     constructor() {
-        this.notificationsObservable = new Observable( (subscriber) => {
-            this.subscriber = subscriber;
-        });
+        this.notificationsSubject = new Subject();
     }
 
     onPublish(cb: (data: Notification) => void): void {
-        this.notificationsObservable.subscribe(value => {
+        this.notificationsSubject.subscribe(value => {
             cb(value);
         });
     }
 
     publish(value: Notification): void {
-        this.subscriber.next(value);
+        this.notificationsSubject.next(value);
     }
 }

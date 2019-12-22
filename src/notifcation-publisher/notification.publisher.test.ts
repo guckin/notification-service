@@ -3,19 +3,38 @@ import {Notification} from '../notifcations/notifaction.interface';
 
 describe('NotificationPublisher', () => {
    let publisher: NotificationPublisher;
-    let actualValue: Notification;
+   let actualValues: Notification[][];
+
 
    beforeEach(() => {
+       actualValues = [[], [], []];
        publisher = new NotificationPublisher();
    });
 
     it('publish to subscribers', () => {
-        publisher.onPublish((data: Notification) => {
-            actualValue = data;
-        });
-        const expectedValue: Notification = {} as any;
-        publisher.publish(expectedValue);
+        multipleSubscribers();
 
-        expect(actualValue).toEqual(expectedValue);
+        const publishedValues: Notification[] = ['foo', 'bar'] as any;
+        publishValues(publishedValues);
+
+        expectValuesPublishedToSubscribers(publishedValues);
     });
+
+    function expectValuesPublishedToSubscribers(values: Notification[]) {
+        expect(actualValues).toEqual(actualValues.map(() => values));
+    }
+
+    function publishValues(values: Notification[]) {
+        values.forEach(value => {
+            publisher.publish(value);
+        });
+    }
+
+    function multipleSubscribers(): void {
+        actualValues.forEach(valueArray => {
+            publisher.onPublish((data: Notification) => {
+                valueArray.push(data);
+            });
+        });
+    }
 });
