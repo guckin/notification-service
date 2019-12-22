@@ -2,10 +2,10 @@ import {Container} from 'inversify';
 import {LoggingService} from '../logging/logging.service';
 import {NotificationPublisher} from '../notification-publisher/notification.publisher';
 import {TYPES} from './types';
-import {NotificationRoute} from '../notifcations/notification.route';
+import {NotificationRoute} from '../notifcations-routing/notification.route';
 import {NotificationSubscriber} from '../notifiction-subscriber/notification.subscriber';
 import {Subject} from 'rxjs';
-import {Notification} from '../notifcations/notifiction.interface';
+import {Notification} from '../notifcations-routing/notifiction.interface';
 
 export const NotificationSubject = new Subject<Notification>();
 

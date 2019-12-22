@@ -1,4 +1,4 @@
-import {Notification} from '../notifcations/notifiction.interface';
+import {Notification} from '../notifcations-routing/notifiction.interface';
 
 export interface NotificationSubscriberInterface {
     subscribe(cb: (data: Notification) => void): NotificationSubscription;

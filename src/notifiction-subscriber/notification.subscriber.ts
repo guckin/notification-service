@@ -1,5 +1,5 @@
 import {Subject} from 'rxjs';
-import {Notification} from '../notifcations/notifiction.interface';
+import {Notification} from '../notifcations-routing/notifiction.interface';
 import {NotificationSubscription, NotificationSubscriberInterface} from './notification.subscriber.interface';
 import {inject, injectable} from 'inversify';
 import 'reflect-metadata';

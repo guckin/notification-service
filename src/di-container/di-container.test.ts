@@ -2,7 +2,7 @@ import {DiContainer, NotificationSubject} from './di-container';
 import {LoggingService} from '../logging/logging.service';
 import {NotificationPublisher} from '../notification-publisher/notification.publisher';
 import {TYPES} from './types';
-import {NotificationRoute} from '../notifcations/notification.route';
+import {NotificationRoute} from '../notifcations-routing/notification.route';
 import {NotificationSubscriber} from '../notifiction-subscriber/notification.subscriber';
 
 describe('di-container', () => {

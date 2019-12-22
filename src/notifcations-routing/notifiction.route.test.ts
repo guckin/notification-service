@@ -16,4 +16,8 @@ describe('NotificationRoutes', () => {
         route.registerTo(router);
         expect(router.get).toHaveBeenCalledWith('/notifications', expect.any(Function));
     });
+
+    it('', () => {
+
+    });
 });

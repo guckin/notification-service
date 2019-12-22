@@ -1,6 +1,6 @@
 import {NotificationSubscriber} from './notification.subscriber';
 import {Subject, Subscription} from 'rxjs';
-import {Notification} from '../notifcations/notifiction.interface';
+import {Notification} from '../notifcations-routing/notifiction.interface';
 import {NotificationSubscription} from './notification.subscriber.interface';
 
 describe('NotificationSubscriber', () => {

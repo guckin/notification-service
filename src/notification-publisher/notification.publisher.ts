@@ -1,5 +1,5 @@
 import {PublisherServiceInterface} from '../publisher/publisher.interface';
-import {Notification} from '../notifcations/notifiction.interface';
+import {Notification} from '../notifcations-routing/notifiction.interface';
 import {Subject} from 'rxjs';
 import 'reflect-metadata';
 import {inject, injectable} from 'inversify';

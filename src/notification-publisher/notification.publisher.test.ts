@@ -1,5 +1,5 @@
 import {NotificationPublisher} from './notification.publisher';
-import {Notification} from '../notifcations/notifiction.interface';
+import {Notification} from '../notifcations-routing/notifiction.interface';
 import {Subject} from 'rxjs';
 
 describe('NotificationPublisher', () => {
