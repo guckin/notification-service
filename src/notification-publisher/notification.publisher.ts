@@ -2,22 +2,16 @@ import {PublisherServiceInterface} from '../publisher/publisher.interface';
 import {Notification} from '../notifcations/notifiction.interface';
 import {Subject} from 'rxjs';
 import 'reflect-metadata';
-import {injectable} from 'inversify';
+import {inject, injectable} from 'inversify';
+import {TYPES} from '../di-container/types';
 
 @injectable()
 export class NotificationPublisher implements PublisherServiceInterface<Notification> {
 
-    private notificationsSubject: Subject<Notification>;
-
-    constructor() {
-        this.notificationsSubject = new Subject();
-    }
-
-    onPublish(cb: (data: Notification) => void): void {
-        this.notificationsSubject.subscribe(value => {
-            cb(value);
-        });
-    }
+    constructor(
+        @inject(TYPES.NotificationSubject)
+        private readonly notificationsSubject: Subject<Notification>
+    ) {}
 
     publish(value: Notification): void {
         this.notificationsSubject.next(value);

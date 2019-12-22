@@ -1,40 +1,24 @@
 import {NotificationPublisher} from './notification.publisher';
 import {Notification} from '../notifcations/notifiction.interface';
+import {Subject} from 'rxjs';
 
 describe('NotificationPublisher', () => {
    let publisher: NotificationPublisher;
-   let actualValues: Notification[][];
-
+   let subject: Subject<Notification>;
 
    beforeEach(() => {
-       actualValues = [[], [], []];
-       publisher = new NotificationPublisher();
+       subject = new Subject<Notification>();
+       subject.next = jest.fn();
+       publisher = new NotificationPublisher(subject);
    });
 
-    it('publish to subscribers', () => {
-        multipleSubscribers();
+    it('publish notifications', () => {
+        const publishedValue: Notification = {some: 'value'} as any;
 
-        const publishedValues: Notification[] = ['foo', 'bar'] as any;
-        publishValues(publishedValues);
+        publisher.publish(publishedValue);
 
-        expectValuesPublishedToSubscribers(publishedValues);
+        expect(subject.next).toHaveBeenCalledWith(publishedValue);
     });
 
-    function expectValuesPublishedToSubscribers(values: Notification[]) {
-        expect(actualValues).toEqual(actualValues.map(() => values));
-    }
 
-    function publishValues(values: Notification[]) {
-        values.forEach(value => {
-            publisher.publish(value);
-        });
-    }
-
-    function multipleSubscribers(): void {
-        actualValues.forEach(valueArray => {
-            publisher.onPublish((data: Notification) => {
-                valueArray.push(data);
-            });
-        });
-    }
 });
