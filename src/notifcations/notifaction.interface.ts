@@ -1,10 +1,10 @@
 export type EventSubscription<T> = (eventData: T) => void;
 
 export interface NotificationServiceInterface {
-    subscribe<T>(cb: EventSubscription<T>): void;
+    subscribe(cb: EventSubscription<Notification>): void;
 }
 
-export interface Notification<T> {
-    data: T;
+export interface Notification {
+    msg: string;
     time: Date;
 }
