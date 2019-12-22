@@ -1,7 +1,10 @@
 import {PublisherServiceInterface} from '../publisher/publisher.interface';
 import {Notification} from '../notifcations/notifaction.interface';
 import {Subject} from 'rxjs';
+import 'reflect-metadata';
+import {injectable} from 'inversify';
 
+@injectable()
 export class NotificationPublisher implements PublisherServiceInterface<Notification> {
 
     private notificationsSubject: Subject<Notification>;
