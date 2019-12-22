@@ -1,4 +1,4 @@
-import {NotificationServiceInterface, Notification, EventSubscription} from './notifaction.interface';
+import {NotificationServiceInterface, Notification, EventSubscription} from './notifiction.interface';
 import {PublisherServiceInterface} from '../publisher/publisher.interface';
 import 'reflect-metadata';
 import {inject, injectable} from 'inversify';

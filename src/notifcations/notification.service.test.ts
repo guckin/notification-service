@@ -1,7 +1,7 @@
 import {NotificationService} from './notification.service';
 import {PublisherServiceMock} from '../publisher/publisher.service.mock';
 import {PublisherServiceInterface} from '../publisher/publisher.interface';
-import {Notification} from './notifaction.interface';
+import {Notification} from './notifiction.interface';
 
 describe('NotificationService', () => {
 

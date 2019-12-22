@@ -1,3 +1,5 @@
+import * as Router from 'koa-router';
+
 export type EventSubscription<T> = (eventData: T) => void;
 
 export interface NotificationServiceInterface {
@@ -7,4 +9,8 @@ export interface NotificationServiceInterface {
 export interface Notification {
     msg: string;
     time: Date;
+}
+
+export interface NotificationRouteInterface {
+    registerTo(router: Router): void;
 }

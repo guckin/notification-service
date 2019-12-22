@@ -15,6 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^24.0.19",
+    "@types/koa": "^2.11.0",
+    "@types/koa-router": "^7.0.42",
     "@types/rx": "^4.1.1",
     "jest": "^24.9.0",
     "ts-jest": "^24.1.0",
@@ -24,6 +26,8 @@
   },
   "dependencies": {
     "inversify": "^5.0.1",
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.3"
   }

@@ -1,5 +1,5 @@
 import {NotificationPublisher} from './notification.publisher';
-import {Notification} from '../notifcations/notifaction.interface';
+import {Notification} from '../notifcations/notifiction.interface';
 
 describe('NotificationPublisher', () => {
    let publisher: NotificationPublisher;
