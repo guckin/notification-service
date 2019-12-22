@@ -7,7 +7,7 @@ import {TYPES} from './types';
 const container = new Container();
 
 container.bind(TYPES.LoggingService).to(LoggingService);
-container.bind(TYPES.NotificationService).to(NotificationService).inSingletonScope();
-container.bind(TYPES.NotificationPublisher).to(NotificationPublisher);
+container.bind(TYPES.NotificationService).to(NotificationService);
+container.bind(TYPES.NotificationPublisher).to(NotificationPublisher).inSingletonScope();
 
 export const DiContainer = container;

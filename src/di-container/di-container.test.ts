@@ -7,8 +7,8 @@ import {TYPES} from './types';
 describe('di-container', () => {
     it('provides dependencies', () => {
         isRegistered(TYPES.LoggingService, LoggingService);
-        isRegistered(TYPES.NotificationPublisher, NotificationPublisher);
-        singletonIsRegistered(TYPES.NotificationService, NotificationService);
+        singletonIsRegistered(TYPES.NotificationPublisher, NotificationPublisher);
+        isRegistered(TYPES.NotificationService, NotificationService);
     });
 
     function singletonIsRegistered(injectionToken: symbol, concreteType: any) {
