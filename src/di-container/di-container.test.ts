@@ -1,6 +1,5 @@
 import {DiContainer} from './di-container';
 import {LoggingService} from '../logging/logging.service';
-import {NotificationService} from '../notifcations/notification.service';
 import {NotificationPublisher} from '../notification-publisher/notification.publisher';
 import {TYPES} from './types';
 import {NotificationRoute} from '../notifcations/notification.route';
@@ -11,7 +10,6 @@ describe('di-container', () => {
     it('provides dependencies', () => {
         isRegistered(TYPES.LoggingService, LoggingService);
         singletonIsRegistered(TYPES.NotificationPublisher, NotificationPublisher);
-        isRegistered(TYPES.NotificationService, NotificationService);
         isRegistered(TYPES.NotificationRoute, NotificationRoute);
         isRegistered(TYPES.NotificationSubscriber, NotificationSubscriber);
         constantRegistered(TYPES.NotificationSubject, NotificationSubject);

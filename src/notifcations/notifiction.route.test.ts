@@ -1,18 +1,13 @@
 import {NotificationRoute} from './notification.route';
-import {NotificationServiceInterface} from './notifiction.interface';
-import {NotificationServiceMock} from './notification.service.mock';
 import * as Router from 'koa-router';
 
 describe('NotificationRoutes', () => {
 
     let route: NotificationRoute;
-    let notificationService: NotificationServiceInterface;
     let router: Router;
 
     beforeEach(() => {
-        notificationService = new NotificationServiceMock();
-        notificationService.subscribe = jest.fn();
-        route = new NotificationRoute(notificationService);
+        route = new NotificationRoute();
         router = new Router();
         router.get = jest.fn();
     });
