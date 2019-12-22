@@ -7,8 +7,8 @@ import {NotificationSubscriber} from '../notifiction-subscriber/notification.sub
 import {Subject} from 'rxjs';
 import {Notification} from '../notifcations-routing/notifiction.interface';
 import {StreamFactory} from '../stream/stream.factory';
-import {notificationMiddleware} from '../notification-middleware/notification-middleware';
 import {SseMiddlewareProvider} from '../sse-middleware/sse-middleware.provider';
+import {NotificationMiddlewareProvider} from '../notification-middleware/notification-middleware.provider';
 
 export const NotificationSubject = new Subject<Notification>();
 
@@ -21,6 +21,6 @@ container.bind(TYPES.NotificationSubscriber).to(NotificationSubscriber);
 container.bind(TYPES.NotificationSubject).toConstantValue(NotificationSubject);
 container.bind(TYPES.StreamFactory).to(StreamFactory);
 container.bind(TYPES.SseMiddlewareProvider).to(SseMiddlewareProvider);
-container.bind(TYPES.NotificationMiddleware).toConstantValue(notificationMiddleware);
+container.bind(TYPES.NotificationMiddlewareProvider).to(NotificationMiddlewareProvider);
 
 export const DiContainer = container;
