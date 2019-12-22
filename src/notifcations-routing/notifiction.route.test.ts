@@ -4,7 +4,7 @@ import {Context} from 'koa';
 import {SseMiddlewareProviderInterface} from '../sse-middleware/sse-middleware.interface';
 import {SseMiddlewareProviderMock} from '../sse-middleware/sse-middleware.provider.mock';
 import {NotificationMiddlewareProviderInterface} from '../notification-middleware/notification-middleware.provider.interface';
-import {NotificationMiddlewareProviderMock} from '../notification-middleware/notificationMiddlewareProviderMock';
+import {NotificationMiddlewareProviderMock} from '../notification-middleware/notification-middleware.provider.mock';
 
 describe('NotificationRoutes', () => {
 
