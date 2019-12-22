@@ -1,10 +1,9 @@
-import {DiContainer} from './di-container';
+import {DiContainer, NotificationSubject} from './di-container';
 import {LoggingService} from '../logging/logging.service';
 import {NotificationPublisher} from '../notification-publisher/notification.publisher';
 import {TYPES} from './types';
 import {NotificationRoute} from '../notifcations/notification.route';
 import {NotificationSubscriber} from '../notifiction-subscriber/notification.subscriber';
-import {NotificationSubject} from '../notifcations/notification.subject';
 
 describe('di-container', () => {
     it('provides dependencies', () => {

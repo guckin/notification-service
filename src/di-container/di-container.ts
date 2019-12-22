@@ -4,7 +4,10 @@ import {NotificationPublisher} from '../notification-publisher/notification.publ
 import {TYPES} from './types';
 import {NotificationRoute} from '../notifcations/notification.route';
 import {NotificationSubscriber} from '../notifiction-subscriber/notification.subscriber';
-import {NotificationSubject} from '../notifcations/notification.subject';
+import {Subject} from 'rxjs';
+import {Notification} from '../notifcations/notifiction.interface';
+
+export const NotificationSubject = new Subject<Notification>();
 
 const container = new Container();
 
