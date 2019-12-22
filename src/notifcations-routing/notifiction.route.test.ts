@@ -8,10 +8,12 @@ describe('NotificationRoutes', () => {
     let router: Router;
     let routeHandler: (ctx: Context) => void;
     let sseMiddleWare: (ctx: Context) => void;
+    let notificationMiddleware: (ctx: Context) => void;
 
     beforeEach(() => {
         sseMiddleWare = jest.fn();
-        route = new NotificationRoute(sseMiddleWare);
+        notificationMiddleware = jest.fn();
+        route = new NotificationRoute(sseMiddleWare, notificationMiddleware);
         router = new Router();
         router.get = jest
             .fn()
@@ -32,6 +34,15 @@ describe('NotificationRoutes', () => {
         handleRoute(ctx);
 
         expect(sseMiddleWare).toHaveBeenCalledWith(ctx);
+    });
+
+    it('uses notification middleware', () => {
+        route.registerTo(router);
+
+        const ctx: Context = {req: {}, res: {}} as any;
+        handleRoute(ctx);
+
+        expect(notificationMiddleware).toHaveBeenCalledWith(ctx);
     });
 
     function handleRoute(ctx: Context): void {

@@ -9,12 +9,15 @@ import {TYPES} from '../di-container/types';
 export class NotificationRoute implements NotificationRouteInterface {
     constructor(
         @inject(TYPES.SseMiddleware)
-        private readonly sseMiddleware: (Koa: Context) => void
+        private readonly sseMiddleware: (Koa: Context) => void,
+        @inject(TYPES.NotificationMiddleware)
+        private readonly notificationMiddleWare: (Koa: Context) => void
     ) {}
 
     registerTo(router: Router): void {
         router.get('/notifications', (ctx: Context) => {
             this.sseMiddleware(ctx);
+            this.notificationMiddleWare(ctx);
         });
     }
 }
