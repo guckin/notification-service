@@ -6,6 +6,7 @@ import {NotificationRoute} from '../notifcations-routing/notification.route';
 import {NotificationSubscriber} from '../notifiction-subscriber/notification.subscriber';
 import {StreamFactory} from '../stream/stream.factory';
 import {sseMiddleWare} from '../sse-middleware/sse-middleware';
+import {notificationMiddleware} from '../notification-middleware/notification-middleware';
 
 describe('di-container', () => {
     it('provides dependencies', () => {
@@ -16,6 +17,7 @@ describe('di-container', () => {
         constantRegistered(TYPES.NotificationSubject, NotificationSubject);
         isRegistered(TYPES.StreamFactory, StreamFactory);
         constantRegistered(TYPES.SseMiddleware, sseMiddleWare);
+        constantRegistered(TYPES.NotificationMiddleware, notificationMiddleware);
     });
 
     function constantRegistered(injectionToken: symbol, constant: any) {

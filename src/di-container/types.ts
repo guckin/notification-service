@@ -5,5 +5,6 @@ export const TYPES = {
     NotificationSubscriber: Symbol('NotificationSubscriber'),
     NotificationSubject: Symbol('NotificationSubject'),
     StreamFactory: Symbol('StreamFactory'),
-    SseMiddleware: Symbol('SseMiddleware')
+    SseMiddleware: Symbol('SseMiddleware'),
+    NotificationMiddleware: Symbol('NotificationMiddleware')
 };
