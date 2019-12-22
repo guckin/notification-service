@@ -3,5 +3,7 @@ export const TYPES = {
     LoggingService: Symbol('LoggingService'),
     NotificationRoute: Symbol('NotificationRoute'),
     NotificationSubscriber: Symbol('NotificationSubscriber'),
-    NotificationSubject: Symbol('NotificationSubject')
+    NotificationSubject: Symbol('NotificationSubject'),
+    StreamFactory: Symbol('StreamFactory'),
+    SseMiddleware: Symbol('SseMiddleware')
 };
