@@ -6,7 +6,7 @@ describe('LoggingService', () => {
 
     beforeEach(() => {
         service = new LoggingService();
-        jest.spyOn(global.console, 'log');
+        jest.spyOn(console, 'log');
     });
 
     it('logs a message', () => {
