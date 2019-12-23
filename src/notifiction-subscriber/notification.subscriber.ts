@@ -16,7 +16,10 @@ export class NotificationSubscriber implements NotificationSubscriberInterface {
     subscribe(cb: (data: Notification) => void): NotificationSubscription {
 
         return {
-            end: this.notificationSubject$.subscribe(cb).unsubscribe
+            end: this
+                .notificationSubject$
+                .subscribe(cb)
+                .unsubscribe
         };
     }
 }
