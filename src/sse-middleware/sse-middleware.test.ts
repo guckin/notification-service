@@ -2,6 +2,7 @@ import {SseMiddlewareProvider} from './sse-middleware.provider';
 import {StreamFactoryMock} from '../stream/stream.factory.mock';
 import {StreamFactoryInterface} from '../stream/stream.factory.interface';
 import {Context} from 'koa';
+import {NewFakeContext} from '../test-helpers/fakeContext';
 
 describe('SseMiddlewareProvider', () => {
 
@@ -18,7 +19,7 @@ describe('SseMiddlewareProvider', () => {
     it('sets up context for sse', () => {
         stream = 'stream' as any;
 
-        const ctx = getFakeContext();
+        const ctx = NewFakeContext();
         provider.attachMiddleware(ctx);
 
         expect(ctx.type).toEqual('text/event-stream');
@@ -35,16 +36,4 @@ describe('SseMiddlewareProvider', () => {
         expect(ctx.res.write).toHaveBeenCalledWith(data);
     }
 
-    function getFakeContext(): Context {
-        return {
-            req: {
-                socket: {
-                    setTimeout: jest.fn()
-                }
-            },
-            res: {
-                write: jest.fn()
-            }
-        } as any;
-    }
 });
