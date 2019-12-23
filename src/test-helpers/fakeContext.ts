@@ -5,10 +5,12 @@ export const NewFakeContext: () => Context = () => {
         req: {
             socket: {
                 setTimeout: jest.fn()
-            }
+            },
+            on: jest.fn()
         },
         res: {
-            write: jest.fn()
+            write: jest.fn(),
+            end: jest.fn()
         }
     } as any;
 };
