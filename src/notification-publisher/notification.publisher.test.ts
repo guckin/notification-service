@@ -20,5 +20,4 @@ describe('NotificationPublisher', () => {
         expect(subject.next).toHaveBeenCalledWith(publishedValue);
     });
 
-
 });

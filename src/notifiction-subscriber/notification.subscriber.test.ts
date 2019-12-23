@@ -18,7 +18,7 @@ describe('NotificationSubscriber', () => {
         subscriberData = [[], [], []];
     });
 
-    it('subscribes to notifications', function () {
+    it('subscribes to notifications', () => {
         multipleSubscriptions();
 
         const expectedData = ['foo', 'bar', 'baz'] as any;
@@ -37,7 +37,7 @@ describe('NotificationSubscriber', () => {
         expect(subscriptionMock.unsubscribe).toBeCalledTimes(subscriptions.length);
     });
 
-    function expectValuesPublishedToSubscribers(values: Notification[]) {
+    function expectValuesPublishedToSubscribers(values: Notification[]): void {
         expect(subscriberData).toEqual(subscriberData.map(() => values));
     }
 
@@ -52,7 +52,7 @@ describe('NotificationSubscriber', () => {
         return subscriptions;
     }
 
-    function publish(...data: Notification[]) {
+    function publish(...data: Notification[]): void {
         data.forEach((notification: Notification) => {
             (subject.subscribe as any)
                 .mock

@@ -31,7 +31,7 @@ describe('SseMiddlewareProvider', () => {
         expect(ctx.req.socket.setTimeout).toHaveBeenCalledWith(value);
     }
 
-    function expectWrittenResponse(ctx: Context, data: any) {
+    function expectWrittenResponse(ctx: Context, data: any): void {
         expect(ctx.res.write).toHaveBeenCalledWith(data);
     }
 

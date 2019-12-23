@@ -25,7 +25,7 @@ export class SseMiddlewareProvider implements SseMiddlewareProviderInterface {
         ctx.body = this.streamFactory.getStream();
     }
 
-    private setType(ctx: Context) {
+    private setType(ctx: Context): void {
         ctx.type = 'text/event-stream';
     }
 

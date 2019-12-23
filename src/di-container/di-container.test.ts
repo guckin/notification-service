@@ -20,19 +20,19 @@ describe('di-container', () => {
         isRegistered(TYPES.NotificationMiddlewareProvider, NotificationMiddlewareProvider);
     });
 
-    function constantRegistered(injectionToken: symbol, constant: any) {
+    function constantRegistered(injectionToken: symbol, constant: any): void {
         const obj = DiContainer.get(injectionToken);
         expect(obj).toBe(constant);
         expect(DiContainer.get(injectionToken)).toBe(obj);
     }
 
-    function singletonIsRegistered(injectionToken: symbol, concreteType: any) {
+    function singletonIsRegistered(injectionToken: symbol, concreteType: any): void {
         const obj = DiContainer.get(injectionToken);
         expect(obj).toBeInstanceOf(concreteType);
         expect(DiContainer.get(injectionToken)).toBe(obj);
     }
 
-    function isRegistered(injectionToken: symbol, concreteType: any) {
+    function isRegistered(injectionToken: symbol, concreteType: any): void {
         const obj = DiContainer.get(injectionToken);
         expect(obj).toBeInstanceOf(concreteType);
     }
