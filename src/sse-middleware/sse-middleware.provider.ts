@@ -36,6 +36,5 @@ export class SseMiddlewareProvider implements SseMiddlewareProviderInterface {
     private initializeWriteStream(ctx: Context): void {
         ctx.res.write('\n');
     }
-
-
+    
 }
