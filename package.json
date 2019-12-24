@@ -9,7 +9,8 @@
     "build": "tsc",
     "test": "jest --config ./jest.config.json",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --config ./jest.config.json --watchAll",
-    "test:watch": "npm run test -- --watchAll"
+    "test:watch": "npm run test -- --watchAll",
+    "lint": "tslint --project tslint.json 'src/**/*.ts'"
   },
   "author": "Stephen McGuckin",
   "license": "ISC",
