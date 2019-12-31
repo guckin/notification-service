@@ -11,5 +11,5 @@ export const TYPES = {
     KoaApplication: Symbol('KoaApplication'),
     RoutingFactory: Symbol('RoutingFactory'),
     KoaRouter: Symbol('KoaRouter'),
-    ServerApplication: Symbol('ServerApplication')
+    App: Symbol('App')
 };

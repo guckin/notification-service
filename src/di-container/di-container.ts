@@ -28,8 +28,8 @@ container.bind(TYPES.SseMiddlewareProvider).to(SseMiddlewareProvider);
 container.bind(TYPES.NotificationMiddlewareProvider).to(NotificationMiddlewareProvider);
 container.bind(TYPES.KoaApplication).toConstantValue(KoaApplication);
 container.bind(TYPES.KoaRouter).toConstantValue(KoaRouter);
-container.bind(TYPES.ServerApplication).to(App);
 container.bind(TYPES.ServerConfiguration).toConstantValue(ServerConfiguration);
 container.bind(TYPES.RoutingFactory).to(RoutingFactory);
+container.bind(TYPES.App).to(App);
 
 export const DiContainer = container;

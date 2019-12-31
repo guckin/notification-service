@@ -25,7 +25,7 @@ describe('di-container', () => {
         constantRegistered(TYPES.KoaApplication, KoaApplication);
         constantRegistered(TYPES.ServerConfiguration, ServerConfiguration);
         isRegistered(TYPES.RoutingFactory, RoutingFactory);
-        isRegistered(TYPES.ServerApplication, App);
+        isRegistered(TYPES.App, App);
         constantRegistered(TYPES.KoaRouter, KoaRouter);
     });
 
