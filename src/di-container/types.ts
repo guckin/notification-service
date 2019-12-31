@@ -6,5 +6,10 @@ export const TYPES = {
     NotificationSubject: Symbol('NotificationSubject'),
     StreamFactory: Symbol('StreamFactory'),
     SseMiddlewareProvider: Symbol('SseMiddlewareProvider'),
-    NotificationMiddlewareProvider: Symbol('NotificationMiddlewareProvider')
+    NotificationMiddlewareProvider: Symbol('NotificationMiddlewareProvider'),
+    ServerConfiguration: Symbol('ServerConfigurationInterface'),
+    KoaApplication: Symbol('KoaApplication'),
+    RoutingFactory: Symbol('RoutingFactory'),
+    KoaRouter: Symbol('KoaRouter'),
+    ServerApplication: Symbol('ServerApplication')
 };

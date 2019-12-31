@@ -7,6 +7,10 @@ import {NotificationSubscriber} from '../notifiction-subscriber/notification.sub
 import {StreamFactory} from '../stream/stream.factory';
 import {SseMiddlewareProvider} from '../sse-middleware/sse-middleware.provider';
 import {NotificationMiddlewareProvider} from '../notification-middleware/notification-middleware.provider';
+import {App} from '../server/app';
+import {KoaApplication, KoaRouter} from '../server/koa-application';
+import {ServerConfiguration} from '../server/server-configuration';
+import {RoutingFactory} from '../server/routing.factory';
 
 describe('di-container', () => {
     it('provides dependencies', () => {
@@ -18,6 +22,11 @@ describe('di-container', () => {
         isRegistered(TYPES.StreamFactory, StreamFactory);
         isRegistered(TYPES.SseMiddlewareProvider, SseMiddlewareProvider);
         isRegistered(TYPES.NotificationMiddlewareProvider, NotificationMiddlewareProvider);
+        constantRegistered(TYPES.KoaApplication, KoaApplication);
+        constantRegistered(TYPES.ServerConfiguration, ServerConfiguration);
+        isRegistered(TYPES.RoutingFactory, RoutingFactory);
+        isRegistered(TYPES.ServerApplication, App);
+        constantRegistered(TYPES.KoaRouter, KoaRouter);
     });
 
     function constantRegistered(injectionToken: symbol, constant: any): void {

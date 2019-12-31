@@ -1,7 +1,10 @@
 import Application = require('koa');
 import * as Router from 'koa-router';
+import {inject, injectable} from 'inversify';
+import {TYPES} from '../di-container/types';
+import 'reflect-metadata';
 
-export interface ServerConfiguration {
+export interface ServerConfigurationInterface {
     port: number;
 }
 export interface ApplicationServerInterface {
@@ -12,11 +15,15 @@ export interface RoutingFactoryInterface {
     getRouter(): Router;
 }
 
+@injectable()
 export class App implements ApplicationServerInterface {
 
     constructor(
-        private readonly config: ServerConfiguration,
+        @inject(TYPES.ServerConfiguration)
+        private readonly config: ServerConfigurationInterface,
+        @inject(TYPES.KoaApplication)
         private readonly app: Application,
+        @inject(TYPES.RoutingFactory)
         private readonly routerFactory: RoutingFactoryInterface
     ) {}
 

@@ -1,4 +1,4 @@
-import {App, RoutingFactoryInterface, ServerConfiguration} from './app';
+import {App, RoutingFactoryInterface, ServerConfigurationInterface} from './app';
 import {RoutingFactoryMock} from './routing.factory.mock';
 import Application = require('koa');
 import * as Router from 'koa-router';
@@ -19,7 +19,7 @@ describe('App', () => {
     });
 
     it('provides an instance of the server', () => {
-        const config: ServerConfiguration = {} as any;
+        const config: ServerConfigurationInterface = {} as any;
         const routes: Router.IMiddleware = {} as any;
         newApplication(config, routes);
 
@@ -29,7 +29,7 @@ describe('App', () => {
         expect(koaApp.listen).toBeCalledWith(config.port);
     });
 
-    function newApplication(config: ServerConfiguration, routes: Router.IMiddleware) {
+    function newApplication(config: ServerConfigurationInterface, routes: Router.IMiddleware) {
         const router = {
             routes: jest.fn().mockReturnValue(routes)
         } as any;
