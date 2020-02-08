@@ -26,8 +26,10 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
+    "@types/koa-bodyparser": "^4.3.0",
     "inversify": "^5.0.1",
     "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.3"

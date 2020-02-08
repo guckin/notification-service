@@ -21,19 +21,23 @@ describe('App', () => {
     it('provides an instance of the server', () => {
         const config: ServerConfigurationInterface = {} as any;
         const routes: Router.IMiddleware = {} as any;
-        newApplication(config, routes);
+        const parser: Application.Middleware = {} as any;
+        newApplication(config, routes, parser);
 
         app.start();
 
         expect(koaApp.use).toBeCalledWith(routes);
         expect(koaApp.listen).toBeCalledWith(config.port);
+        expect(koaApp.use).toHaveBeenCalledWith(parser);
     });
 
-    function newApplication(config: ServerConfigurationInterface, routes: Router.IMiddleware) {
+    function newApplication(config: ServerConfigurationInterface,
+                            routes: Router.IMiddleware,
+                            parser: Application.Middleware) {
         const router = {
             routes: jest.fn().mockReturnValue(routes)
         } as any;
         routingFactory.getRouter = jest.fn().mockReturnValue(router);
-        app = new App(config, koaApp, routingFactory);
+        app = new App(config, koaApp, routingFactory, parser);
     }
 });
