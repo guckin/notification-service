@@ -18,7 +18,6 @@ jobs:
           node-version: 12.x
       - name: npm install, lint, and test
         run: |
-          npm lint
           npm ci
           npm test
         env:
