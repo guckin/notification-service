@@ -18,7 +18,7 @@ export class NotificationSubscriber implements NotificationSubscriberInterface {
         let ended = false;
         return {
             end: () => {
-                if (ended) {
+                if (!ended) {
                     subscription.unsubscribe();
                     ended = true;
                 }
