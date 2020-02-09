@@ -14,11 +14,15 @@ export class NotificationSubscriber implements NotificationSubscriberInterface {
     ) {}
 
     subscribe(cb: (data: Notification) => void): NotificationSubscription {
+        const subscription = this.notificationSubject$.subscribe(cb);
+        let ended = false;
         return {
-            end: this
-                .notificationSubject$
-                .subscribe(cb)
-                .unsubscribe
+            end: () => {
+                if (ended) {
+                    subscription.unsubscribe();
+                    ended = true;
+                }
+            }
         };
     }
 }
