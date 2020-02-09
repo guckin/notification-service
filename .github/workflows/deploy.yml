@@ -7,7 +7,6 @@ on:
       - release/*
 jobs:
   test:
-    - name: checkout
     - uses: actions/checkout@v1
     - name: setup
     - uses: actions/setup-node@v1
