@@ -2,9 +2,8 @@ import Application = require('koa');
 import * as Router from 'koa-router';
 import {inject, injectable} from 'inversify';
 import {TYPES} from '../di-container/types';
+import * as cors from '@koa/cors';
 import 'reflect-metadata';
-import {LoggingService} from '../logging/logging.service';
-import {LoggingServiceInterface} from '../logging/logging.service.interface';
 
 export interface ServerConfigurationInterface {
     port: number;
@@ -32,6 +31,7 @@ export class App implements ApplicationServerInterface {
     ) {}
 
     start(): void {
+        this.app.use(cors({origin: '*'}));
         this.app.use(this.bodyParser);
         this.app.use(this.routerFactory.getRouter().routes());
         try {
