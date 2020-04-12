@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: notification-service
+  name: notification-service
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: notification-service
+    spec:
+      containers:
+        - image: gcr.io/slippy-gets-treats/github.com/guckin/notification-service
+          imagePullPolicy: IfNotPresent
+          name: notification-service-sha256-1
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: notification-service
+  name: notification-service-hpa-1qvf
+  namespace: default
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 80
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: notification-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: notification-service
+  name: notification-service-service
+  namespace: default
+spec:
+  clusterIP: 10.0.11.80
+  externalTrafficPolicy: Cluster
+  ports:
+    - nodePort: 32010
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: notification-service
+  sessionAffinity: None
+  type: LoadBalancer
