@@ -16,7 +16,7 @@ export class NotificationMiddlewareProvider implements NotificationMiddlewarePro
 
     attachMiddleware(ctx: Context): void {
         const subscription = this.notificationSubscriber.subscribe((notification) => {
-            ctx.res.write(JSON.stringify(notification));
+            ctx.res.write('id: 1\ndata:' + JSON.stringify(notification) + '\n\n');
         });
         ['close', 'finish', 'error'].forEach((event) => {
             ctx.req.on(event, () => {

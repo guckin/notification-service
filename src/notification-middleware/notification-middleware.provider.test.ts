@@ -36,7 +36,7 @@ describe('NotificationMiddlewareProvider', () => {
         const data: Notification = {} as any;
         onPublish(data);
 
-        expect(context.res.write).toHaveBeenCalledWith(JSON.stringify(data));
+        expect(context.res.write).toHaveBeenCalledWith('id: 1\ndata:' + JSON.stringify(data) + '\n\n');
     });
 
     it(`cleans up on bad events`, () => {
