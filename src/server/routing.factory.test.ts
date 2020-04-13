@@ -3,6 +3,7 @@ import {NotificationRouteInterface} from '../notifcations-routing/notifiction.in
 import {NotificationRouteMock} from '../notifcations-routing/notification.route.mock';
 import * as Router from 'koa-router';
 import {PublisherRoute} from '../publisher/publisher.route';
+import {HealthCheckRouteInterface} from '../health-check/health-check.route';
 
 describe('RoutingFactory', () => {
 
@@ -10,6 +11,7 @@ describe('RoutingFactory', () => {
     let notifyRoutes: NotificationRouteInterface;
     let router: Router;
     let publisherRoute: PublisherRoute;
+    let healthCheckRoute: HealthCheckRouteInterface;
 
     beforeEach(() => {
         router = {} as any;
@@ -18,7 +20,10 @@ describe('RoutingFactory', () => {
         publisherRoute = {
             registerTo: jest.fn()
         } as any;
-        factory = new RoutingFactory(router, notifyRoutes, publisherRoute);
+        healthCheckRoute = {
+            registerTo: jest.fn()
+        } as any;
+        factory = new RoutingFactory(router, notifyRoutes, publisherRoute, healthCheckRoute);
     });
 
     it('gets an initialized router', () => {
@@ -27,5 +32,6 @@ describe('RoutingFactory', () => {
         expect(result).toBe(router);
         expect(notifyRoutes.registerTo).toBeCalledWith(router);
         expect(publisherRoute.registerTo).toHaveBeenCalledWith(router);
+        expect(healthCheckRoute.registerTo).toHaveBeenCalledWith(router);
     });
 });

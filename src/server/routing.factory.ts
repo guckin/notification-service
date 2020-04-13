@@ -5,6 +5,7 @@ import {inject, injectable} from 'inversify';
 import 'reflect-metadata';
 import {TYPES} from '../di-container/types';
 import {PublisherRoute} from '../publisher/publisher.route';
+import {HealthCheckRouteInterface} from '../health-check/health-check.route';
 
 @injectable()
 export class RoutingFactory implements RoutingFactoryInterface {
@@ -15,12 +16,15 @@ export class RoutingFactory implements RoutingFactoryInterface {
         @inject(TYPES.NotificationRoute)
         private readonly notificationRoute: NotificationRouteInterface,
         @inject(TYPES.PublisherRoute)
-        private readonly publisherRoute: PublisherRoute
+        private readonly publisherRoute: PublisherRoute,
+        @inject(TYPES.HealthCheckRoute)
+        private readonly healthCheckRoute: HealthCheckRouteInterface
     ) {}
 
     getRouter(): Router {
         this.notificationRoute.registerTo(this.koaRouter);
         this.publisherRoute.registerTo(this.koaRouter);
+        this.healthCheckRoute.registerTo(this.koaRouter);
         return this.koaRouter;
     }
 }
