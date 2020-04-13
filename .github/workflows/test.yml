@@ -7,7 +7,7 @@ on:
       - release/*
 jobs:
   deploy:
-    name: Deploy
+    name: Build Test
     runs-on: ubuntu-latest
 
     steps:
@@ -22,9 +22,10 @@ jobs:
           npm test
         env:
           CI: true
-      - uses: actions-hub/gcloud@master
-        env:
-          PROJECT_ID: ${{secrets.PROJECT_NAME}}
-          APPLICATION_CREDENTIALS: ${{secrets.GCLOUD_AUTH}}
-        with:
-          args: app deploy app.yaml
+#      This is for deployment leaving it here so I remember how to do it
+#      - uses: actions-hub/gcloud@master
+#        env:
+#          PROJECT_ID: ${{secrets.PROJECT_NAME}}
+#          APPLICATION_CREDENTIALS: ${{secrets.GCLOUD_AUTH}}
+#        with:
+#          args: app deploy app.yaml
