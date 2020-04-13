@@ -1,4 +1,5 @@
 export const TYPES = {
+    HealthCheckRoute: Symbol('HealthCheckRoute'),
     NotificationPublisher: Symbol('NotificationPublisher'),
     LoggingService: Symbol('LoggingService'),
     NotificationRoute: Symbol('NotificationRoute'),

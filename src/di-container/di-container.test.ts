@@ -12,9 +12,11 @@ import {KoaApplication, KoaBodyParser, KoaRouter} from '../server/koa-applicatio
 import {ServerConfiguration} from '../server/server-configuration';
 import {RoutingFactory} from '../server/routing.factory';
 import {PublisherRoute} from '../publisher/publisher.route';
+import {HealthCheckRoute} from '../health-check/health-check.route';
 
 describe('di-container', () => {
     it('provides dependencies', () => {
+        isRegistered(TYPES.HealthCheckRoute, HealthCheckRoute);
         isRegistered(TYPES.LoggingService, LoggingService);
         singletonIsRegistered(TYPES.NotificationPublisher, NotificationPublisher);
         isRegistered(TYPES.NotificationRoute, NotificationRoute);

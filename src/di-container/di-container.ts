@@ -14,11 +14,13 @@ import {App} from '../server/app';
 import {ServerConfiguration} from '../server/server-configuration';
 import {RoutingFactory} from '../server/routing.factory';
 import {PublisherRoute} from '../publisher/publisher.route';
+import {HealthCheckRoute} from '../health-check/health-check.route';
 
 export const NotificationSubject = new Subject<Notification>();
 
 const container = new Container();
 
+container.bind(TYPES.HealthCheckRoute).to(HealthCheckRoute);
 container.bind(TYPES.LoggingService).to(LoggingService);
 container.bind(TYPES.NotificationPublisher).to(NotificationPublisher).inSingletonScope();
 container.bind(TYPES.NotificationRoute).to(NotificationRoute);
